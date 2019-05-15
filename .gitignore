@@ -1,0 +1,10 @@
+.yml
+.json
+.envrc
+.vagrant
+.vim
+credentials.csv
+terraform.tfvars
+README.md
+.log
+dns-delegation
