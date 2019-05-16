@@ -12,5 +12,6 @@ Vagrant.configure(2) do |config|
     # ---- copy terraform .tf files ----
     host.vm.provision "file", source: "./terraform_files/main.tf", destination: "$HOME/terransible/"
     host.vm.provision "file", source: "./terraform_files/variables.tf", destination: "$HOME/terransible/"
+    host.vm.provision "file", source: "./terraform_files/terraform.tfvars", destination: "$HOME/terransible/"
   end
 end
