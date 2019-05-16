@@ -1,5 +1,8 @@
 #!/bin/bash
 set -ex
+
+# ----- setup everything IF ! exist -----
+
 if dpkg -l |grep -q terraform; then
   
   # requirements
@@ -67,7 +70,21 @@ if dpkg -l |grep -q terraform; then
   mkdir terransible
 fi
 
+# ---- setup working DIR IF ! exist ----
 
-
-
-
+if [ ! -d $HOME/terransible ]; then 
+  # change to the terraform dir
+  cd $HOME/terransible
+  
+  # create the structure IF ! exist
+  touch main.tf terraform.tfvars variables.tf userdata aws_hosts wordpress.yml s3update.yml
+  
+  # view layout
+  tree . 
+  
+  # copy over the terraform.tfvars file we do not include this in the echo script below
+  
+  cp -rf /vagrant/config/terraform.tfvars $HOME/terransible/
+  
+  # build out our main.tf, varaibles.tf using "tee" I want this to be transferrable to live system.
+fi
