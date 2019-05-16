@@ -29,7 +29,7 @@ if dpkg -l |grep -q terraform; then
   
   # unzip to /tmp will be removed on reboot while in /tmp
   cd /tmp
-  wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+  wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
   unzip terraform*.zip
   
   chmod +x terraform*
