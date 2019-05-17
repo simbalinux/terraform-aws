@@ -13,5 +13,8 @@ Vagrant.configure(2) do |config|
     host.vm.provision "file", source: "./terraform_files/main.tf", destination: "$HOME/terransible/"
     host.vm.provision "file", source: "./terraform_files/variables.tf", destination: "$HOME/terransible/"
     host.vm.provision "file", source: "./terraform_files/terraform.tfvars", destination: "$HOME/terransible/"
+    # ---- ansible playbooks information ----
+    host.vm.provision "file", source: "./ansible/s3update.yml", destination: "$HOME/terransible/"
+    host.vm.provision "file", source: "./ansible/wordpress.yml", destination: "$HOME/terransible/"
   end
 end
