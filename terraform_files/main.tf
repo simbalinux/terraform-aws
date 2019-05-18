@@ -202,7 +202,7 @@ resource "aws_route_table_association" "wp_pulic1_assoc" {
 
 resource "aws_route_table_association" "wp_public2_assoc" {
   subnet_id = "${aws_subnet.wp_public2_subnet.id}"
-  route_table_id = "{aws_route_table.wp_public_rt.id}"
+  route_table_id = "${aws_route_table.wp_public_rt.id}"
 }
 
 resource "aws_route_table_association" "wp_private1_assoc" {
@@ -363,7 +363,8 @@ resource "aws_s3_bucket" "code" {
 resource "aws_db_instance" "wp_db" {
   allocated_storage = 10
   engine = "mysql"
-  engine_version = "5.6.27"
+  engine_version = "5.7"
+  allow_major_version_upgrade = true
   instance_class = "${var.db_instance_class}"
   name = "${var.dbname}"
   username = "${var.dbuser}"
@@ -562,5 +563,6 @@ resource "aws_route53_record" "db" {
   zone_id = "${aws_route53_zone.secondary.zone_id}"
   name = "db.${var.domain_name}.com" 
   type = "CNAME"
+  ttl = "300"
   records = ["${aws_db_instance.wp_db.address}"]
 }
