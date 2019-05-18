@@ -82,9 +82,7 @@ if [ ! -d $HOME/terransible ]; then
   # view layout
   tree . 
   
-  # copy over the terraform.tfvars file we do not include this in the echo script below
-  
+  # ensure you put this in your .gitignore 
   cp -rf /vagrant/config/terraform.tfvars $HOME/terransible/
   
-  # build out our main.tf, varaibles.tf using "tee" I want this to be transferrable to live system.
 fi
