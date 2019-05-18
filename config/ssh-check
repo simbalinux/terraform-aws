@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# enable the ssh agent
+ssh-agent bash
+# add key to the agent
+ssh-add $HOME/.ssh/id_rsa
+# view/list key 
+ssh-add -l
+
